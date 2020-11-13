@@ -31,19 +31,19 @@ func execCmd(path string, args ...string) {
 func main() {
 
 	if len(os.Args) < 3 {
-		fmt.Println("usage: wifiadd.exe ssid passwd")
+		fmt.Println("usage: wifiaddcmd.exe ssid passwd")
 		return
 	}
 
 	ssid := os.Args[1]
 	passwd := os.Args[2]
 
-	text := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8" ?>
+	text := `<?xml version="1.0" encoding="UTF-8" ?>
 	<WLANProfile xmlns="http://www.microsoft.com/networking/WLAN/profile/v1">
-	    <name>%s</name>
+	    <name>` + ssid + `</name>
 	    <SSIDConfig>
 	        <SSID>
-	            <name>%s</name>
+	            <name>` + ssid + `</name>
 	        </SSID>
 	    </SSIDConfig>
 	    <connectionType>ESS</connectionType>
@@ -58,11 +58,11 @@ func main() {
 	            <sharedKey>
 	                <keyType>passPhrase</keyType>
 	                <protected>false</protected>
-	                <keyMaterial>%s</keyMaterial>
+	                <keyMaterial>` + passwd + `</keyMaterial>
 	            </sharedKey>
 	        </security>
 	    </MSM>
-	</WLANProfile>`, ssid, passwd)
+	</WLANProfile>`
 
 	path, _ := os.LookupEnv("temp")
 
