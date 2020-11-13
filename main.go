@@ -40,7 +40,7 @@ func main() {
 
 	text := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8" ?>
 	<WLANProfile xmlns="http://www.microsoft.com/networking/WLAN/profile/v1">
-	    <name>жопа</name>
+	    <name>%s</name>
 	    <SSIDConfig>
 	        <SSID>
 	            <name>%s</name>
